@@ -1,61 +1,116 @@
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
 
-## About Laravel
+# 🌍 Takaful
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+**Takaful** is a humanitarian platform created in response to the ongoing crisis in Gaza. It connects those in need with those who wish to offer help. Through transparent donation tracking, verified aid requests, and secure case management, Takaful brings urgent relief, dignity, and hope to affected communities.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+---
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## 📌 Table of Contents
 
-## Learning Laravel
+- [Overview](#overview)
+- [Features](#features)
+- [Live Preview](#live-preview)
+- [Usage](#usage)
+- [Screenshots](#screenshots)
+- [Contributing](#contributing)
+- [License](#license)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+---
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## 📖 Overview
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Takaful empowers users to either submit a case for humanitarian support or contribute donations to assist victims. Whether you are looking to help or in need of help, the platform ensures secure, organized, and transparent interactions.
 
-## Laravel Sponsors
+> This platform was inspired by the pressing need for a system to manage and deliver aid efficiently in times of crisis, especially during wars and humanitarian disasters.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+---
 
-### Premium Partners
+## ✨ Features
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development/)**
-- **[Active Logic](https://activelogic.com)**
+- 🎯 **Simple Authentication**: Built using [Laravel Breeze](https://laravel.com/docs/starter-kits#breeze) for lightweight and secure user auth.
+- 📝 **Case Submission**: Victims can submit verified cases for aid (e.g., loss of home or loved one).
+- 💳 **Donations**: Supporters can donate securely with transparency.
+- 🔒 **Data Privacy**: All sensitive information is securely stored and only used for verification and aid purposes.
+- 📊 **Impact Stats**: Real-time display of how many were helped — food distributed, medical aid provided, children supported, and shelters offered.
+- 📽️ **Hero Video**: A meaningful background video highlights the cause.
+- 💬 **Contact Form**: Lets users get in touch or send inquiries directly.
+- 📱 **Responsive Design**: Fully mobile-friendly layout using Bootstrap 4.
 
-## Contributing
+---
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## 🌐 Live Preview
 
-## Code of Conduct
+You can view a live demo of the Takaful landing page here:
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+👉 [www.takaful.org](https://www.takaful.org)
 
-## Security Vulnerabilities
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
-## License
+---
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## 🚀 Usage
+
+### 🆘 Register a Case
+
+Users impacted by war (e.g., displaced families, those who've lost loved ones) can submit their stories with documentation for aid consideration. This includes:
+
+- Basic personal info
+- Description of damage/loss
+- Uploads (photos/documents)
+
+### 💝 Make a Donation
+
+Supporters can choose to:
+
+- Donate funds (food, shelter, medical, or general)
+- Track impact (e.g., how many meals provided)
+- View transparent stats about fund allocation
+
+### 📧 Get in Touch
+
+Contact form allows visitors to ask questions or request help directly from the platform's support team.
+
+---
+
+## 📸 Screenshots
+
+### 🖼️ Home Page
+
+![Takaful Home](assets/images/screenshot-home.png)
+
+### 📋 Services Section
+
+![Services](assets/images/screenshot-services.png)
+
+### 📦 Donation & Case Submission
+
+![Apply](assets/images/screenshot-apply.png)
+
+
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome! Here's how you can help:
+
+1. Fork the repository
+2. Create a new branch: `git checkout -b feature-name`
+3. Make your changes
+4. Commit your changes: `git commit -m 'Add some feature'`
+5. Push to the branch: `git push origin feature-name`
+6. Open a pull request
+
+If you're a designer, consider contributing improved UI or accessibility enhancements. ❤️
+
+---
+
+## 📄 License
+
+This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for details.
+
+---
+
+> Built with ❤️ for the people of Gaza by those who care.
