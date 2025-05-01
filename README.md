@@ -1,13 +1,13 @@
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 
-# 🌍 Takaful
+# Takaful
 
 **Takaful** is a humanitarian platform created in response to the ongoing crisis in Gaza. It connects those in need with those who wish to offer help. Through transparent donation tracking, verified aid requests, and secure case management, Takaful brings urgent relief, dignity, and hope to affected communities.
 
 ---
 
-## 📌 Table of Contents
+## Table of Contents
 
 - [Overview](#overview)
 - [Features](#features)
@@ -19,7 +19,7 @@
 
 ---
 
-## 📖 Overview
+## Overview
 
 Takaful empowers users to either submit a case for humanitarian support or contribute donations to assist victims. Whether you are looking to help or in need of help, the platform ensures secure, organized, and transparent interactions.
 
@@ -27,20 +27,20 @@ Takaful empowers users to either submit a case for humanitarian support or contr
 
 ---
 
-## ✨ Features
+## Features
 
-- 🎯 **Simple Authentication**: Built using [Laravel Breeze](https://laravel.com/docs/starter-kits#breeze) for lightweight and secure user auth.
-- 📝 **Case Submission**: Victims can submit verified cases for aid (e.g., loss of home or loved one).
-- 💳 **Donations**: Supporters can donate securely with transparency.
-- 🔒 **Data Privacy**: All sensitive information is securely stored and only used for verification and aid purposes.
-- 📊 **Impact Stats**: Real-time display of how many were helped — food distributed, medical aid provided, children supported, and shelters offered.
-- 📽️ **Hero Video**: A meaningful background video highlights the cause.
-- 💬 **Contact Form**: Lets users get in touch or send inquiries directly.
-- 📱 **Responsive Design**: Fully mobile-friendly layout using Bootstrap 4.
+- **Simple Authentication**: Built using [Laravel Breeze](https://laravel.com/docs/starter-kits#breeze) for lightweight and secure user auth.
+- **Case Submission**: Victims can submit verified cases for aid (e.g., loss of home or loved one).
+- **Donations**: Supporters can donate securely with transparency.
+- **Data Privacy**: All sensitive information is securely stored and only used for verification and aid purposes.
+- **Impact Stats**: Real-time display of how many were helped — food distributed, medical aid provided, children supported, and shelters offered.
+- **Hero Video**: A meaningful background video highlights the cause.
+- **Contact Form**: Lets users get in touch or send inquiries directly.
+- **Responsive Design**: Fully mobile-friendly layout using Bootstrap 4.
 
 ---
 
-## 🌐 Live Preview
+## Live Preview
 
 You can view a live demo of the Takaful landing page here:
 
@@ -50,9 +50,9 @@ You can view a live demo of the Takaful landing page here:
 
 ---
 
-## 🚀 Usage
+## Usage
 
-### 🆘 Register a Case
+### Register a Case
 
 Users impacted by war (e.g., displaced families, those who've lost loved ones) can submit their stories with documentation for aid consideration. This includes:
 
@@ -60,7 +60,7 @@ Users impacted by war (e.g., displaced families, those who've lost loved ones) c
 - Description of damage/loss
 - Uploads (photos/documents)
 
-### 💝 Make a Donation
+### Make a Donation
 
 Supporters can choose to:
 
@@ -68,23 +68,23 @@ Supporters can choose to:
 - Track impact (e.g., how many meals provided)
 - View transparent stats about fund allocation
 
-### 📧 Get in Touch
+### Get in Touch
 
 Contact form allows visitors to ask questions or request help directly from the platform's support team.
 
 ---
 
-## 📸 Screenshots
+## Screenshots
 
-### 🖼️ Home Page
+### Home Page
 
 ![Takaful Home](assets/images/screenshot-home.png)
 
-### 📋 Services Section
+### Services Section
 
 ![Services](assets/images/screenshot-services.png)
 
-### 📦 Donation & Case Submission
+### Donation & Case Submission
 
 ![Apply](assets/images/screenshot-apply.png)
 
@@ -92,7 +92,7 @@ Contact form allows visitors to ask questions or request help directly from the 
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
 Contributions are welcome! Here's how you can help:
 
@@ -107,7 +107,7 @@ If you're a designer, consider contributing improved UI or accessibility enhance
 
 ---
 
-## 📄 License
+## License
 
 This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for details.
 
