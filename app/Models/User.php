@@ -17,10 +17,13 @@ class User extends Authenticatable
      *
      * @var list<string>
      */
+    protected $primaryKey = 'user_id';
+
     protected $fillable = [
-        'name',
-        'email',
-        'password',
+        'first_name', 'father_name', 'grandfather_name', 'last_name',
+        'email', 'password', 'phone', 'gender', 'date_of_birth',
+        'nationality', 'id_number', 'marital_status',
+        'residence_place', 'street_name', 'building_number', 'city', 'ZIP', 'profile_picture'
     ];
 
     /**
@@ -32,6 +35,21 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
+
+
+
+    public function cases()
+    {
+        return $this->hasMany(CaseForm::class, 'user_id', 'user_id');
+    }
+
+    public function donations()
+    {
+        return $this->hasMany(Donation::class, 'user_id', 'user_id');
+    }
+
+
+
 
     /**
      * Get the attributes that should be cast.
