@@ -59,7 +59,5 @@
         </div>
       </div>
     </div>
-    <div class="footer">
-      <p>Copyright © 2022 Takaful. All Rights Reserved. 
-    </div>
+    
   </section>

@@ -13,16 +13,24 @@ return new class extends Migration
     {
         Schema::create('donations', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->unsignedBigInteger('guest_donor_id')->nullable();
+
             $table->decimal('amount', 10, 2);
-            $table->string('currency');
+            $table->string('currency', 10)->default('USD');
+            $table->enum('payment_method', ['paypal', 'credit_card', 'bank_transfer', 'apple_pay', 'google_pay']);
+            $table->enum('payment_status', ['pending', 'completed', 'failed'])->default('pending');
+
+            $table->string('payment_reference')->nullable();
+            $table->string('paypal_transaction_id')->nullable();
+            $table->string('card_brand')->nullable();
+            $table->string('card_last_four')->nullable();
+
             $table->text('notes')->nullable();
-            $table->enum('payment_method', ['credit_card','paypal','bank_transfer','cash','mobile_payment']);
-            $table->enum('status', ['pending', 'approved', 'rejected'])->default('pending');
-            $table->text('admin_note')->nullable();
             $table->timestamps();
 
-            $table->foreign('user_id')->references('user_id')->on('users')->onDelete('cascade');
+            $table->foreign('user_id')->references('user_id')->on('users')->onDelete('set null');
+            $table->foreign('guest_donor_id')->references('id')->on('guest_donors')->onDelete('set null');
         });
     }
 
