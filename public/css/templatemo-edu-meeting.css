@@ -1065,12 +1065,7 @@ section.our-services .categories .main-button-red a {
   border-bottom-left-radius: 20px;
 }
 
-.meeting-item .down-content .date {
-  float: left;
-  text-align: center;
-  display: inline-block;
-  margin-right: 20px;
-}
+
 
 .meeting-item .down-content .date h6 {
   font-size: 13px;

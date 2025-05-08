@@ -50,6 +50,14 @@ class User extends Authenticatable
 
 
 
+    public function getProfilePhotoUrlAttribute()
+    {
+        return $this->profile_picture
+            ? asset('storage/' . $this->profile_picture)
+            : asset('images/default-profile.png'); // fallback image
+    }
+
+
 
     /**
      * Get the attributes that should be cast.
