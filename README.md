@@ -62,41 +62,41 @@ To provide a visual overview, here are screenshots from various parts of the pla
 
 ### 🏠 Homepage
 ![Homepage](screenshots/homepage.png)
-![Homepage](screenshots/homepage-service.png)
-![Homepage](screenshots/homepage-homepage-apply.png)
-![Homepage](screenshots/homepage-homepage-numbers.png)
-![Homepage](screenshots/homepage-homepage-contact.png)
-![Homepage](screenshots/homepage-homepage-menu.png)
+![Homepage - service](screenshots/homepage-service.png)
+![Homepage - apply](screenshots/homepage-apply.png)
+![Homepage - numbers](screenshots/homepage-numbers.png)
+![Homepage - contact](screenshots/homepage-contact.png)
+![Homepage - menu](screenshots/homepage-menu.png)
 
 ### Login | Register
 
-![Login | Register](screenshots/register.png)
-![Login | Register](screenshots/login.png)
+![Register](screenshots/register.png)
+![Login](screenshots/login.png)
 
 ### 💳 Donation Form
-![Donation Form](screenshots/donation-register-1.png)
-![Donation Form](screenshots/donation-register-2.png)
-![Donation Form](screenshots/donation-register-3.png)
+![Donation register1](screenshots/donation-register-1.png)
+![Donation register2](screenshots/donation-register-2.png)
+![Donation register3](screenshots/donation-register-3.png)
 
 ### 🆘 Case Submission Form
-![Case Submission](screenshots/case-register-1.png)
-![Case Submission](screenshots/case-register-2.png)
-![Case Submission](screenshots/case-success.png)
+![Case Submission1](screenshots/case-register-1.png)
+![Case Submission2](screenshots/case-register-2.png)
+![Case Submission3](screenshots/case-success.png)
 
 ### 👤 Profile Page
-![Profile Page](screenshots/profile-1.png)
-![Profile Page](screenshots/profile-2.png)
-![Profile Page](screenshots/profile-3.png)
+![Profile Page1](screenshots/profile-1.png)
+![Profile Page2](screenshots/profile-2.png)
+![Profile Page3](screenshots/profile-3.png)
 
 ### 🧭 User Dashboard
 ![Dashboard](screenshots/dashboard.png)
 
 ### 🛠️ Admin Panel
-![Admin Panel](screenshots/admin-panel-general-user.png)
-![Admin Panel](screenshots/admin-panel-general-user-show.png)
-![Admin Panel](screenshots/admin-panel-general-case-show.png)
-![Admin Panel](screenshots/admin-panel-general-case-edit.png)
-![Admin Panel](screenshots/admin-panel-general-donation-delete.png)
+![Admin Panel1](screenshots/admin-panel-general-user.png)
+![Admin Panel2](screenshots/admin-panel-general-user-show.png)
+![Admin Panel3](screenshots/admin-panel-general-case-show.png)
+![Admin Panel4](screenshots/admin-panel-general-case-edit.png)
+![Admin Panel5](screenshots/admin-panel-general-donation-delete.png)
 
 
 
