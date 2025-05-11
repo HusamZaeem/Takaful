@@ -2,7 +2,7 @@
 
 @section('title', 'Make a Donation')
 
-<div style="background-color: #818181; min-height: 137px;"></div>
+<div style="background-color: #1f2936; min-height: 137px;"></div>
 
 
 <div class="position-relative mb-0 text-center">
@@ -14,12 +14,12 @@
   
 
   select.form-control option {
-    background-color: #343a40;  /* dark background */
+    background-color: #545c6a;  /* dark background */
     color: white;               /* white text */
   }
 
   textarea.form-control {
-    background-color: #6c757d; /* Bootstrap's secondary */
+    background-color: #545c6a; /* Bootstrap's secondary */
     color: white;
     border: 0;
   }
@@ -30,7 +30,7 @@
 
 @section('content')
 
-<div class="container-fluid bg-dark text-white py-5 px-4 rounded-0 shadow-lg">
+<div class="container-fluid text-white py-5 px-4 rounded-0 shadow-lg" style="background-color: #1f2936;">
 
   <div class="container">
     <h2>Make a Donation</h2>
@@ -42,11 +42,11 @@
       @guest
         <div class="mb-3">
           <label for="guest_name">Name</label>
-          <input type="text" class="form-control bg-secondary text-white border-0" name="guest_name" id="guest_name" class="form-control" required>
+          <input type="text" class="form-control text-white border-0" style="background-color: #545c6a;" name="guest_name" id="guest_name" class="form-control" required>
         </div>
         <div class="mb-3">
           <label for="guest_email">Email</label>
-          <input type="email" class="form-control bg-secondary text-white border-0" name="guest_email" id="guest_email" class="form-control" required>
+          <input type="email" class="form-control text-white border-0" style="background-color: #545c6a;" name="guest_email" id="guest_email" class="form-control" required>
         </div>
       @endguest
 
@@ -55,11 +55,11 @@
         <div class="row">
           <div class="col-md-8 mb-2 mb-md-0">
             <label for="amount">Donation Amount</label>
-            <input type="number" class="form-control bg-secondary text-white border-0" step="0.01" name="amount" id="amount" required>
+            <input type="number" class="form-control text-white border-0" style="background-color: #545c6a;" step="0.01" name="amount" id="amount" required>
           </div>
           <div class="col-md-4">
             <label for="currency">Currency</label>
-            <select name="currency" id="currency" class="form-control bg-secondary text-white border-0" required>
+            <select name="currency" id="currency" class="form-control text-white border-0" style="background-color: #545c6a;" required>
               <option value="">Select currency</option>
               <option value="USD">USD</option>
               <option value="EUR">EUR</option>
@@ -77,7 +77,7 @@
       {{-- Payment Method --}}
       <div class="mb-3">
         <label for="payment_method">Payment Method</label>
-        <select name="payment_method" id="payment_method" class="form-control bg-secondary text-white border-0" required>
+        <select name="payment_method" id="payment_method" class="form-control text-white border-0" style="background-color: #545c6a;" required>
           <option value="">Select a method</option>
           <option value="paypal">PayPal</option>
           <option value="credit_card">Credit Card</option>
@@ -95,19 +95,19 @@
       <div id="creditCardFields" class="payment-section d-none">
         <div class="mb-3">
           <label for="card_holder">Card Holder Name</label>
-          <input type="text" class="form-control bg-secondary text-white border-0" name="card_holder" class="form-control">
+          <input type="text" class="form-control text-white border-0" style="background-color: #545c6a;" name="card_holder" class="form-control">
         </div>
         <div class="mb-3">
           <label for="card_number">Card Number</label>
-          <input type="text" class="form-control bg-secondary text-white border-0" name="card_number" class="form-control">
+          <input type="text" class="form-control text-white border-0" style="background-color: #545c6a;" name="card_number" class="form-control">
         </div>
         <div class="mb-3">
           <label for="card_expiry">Expiry Date</label>
-          <input type="month" class="form-control bg-secondary text-white border-0" name="card_expiry" class="form-control">
+          <input type="month" class="form-control text-white border-0" style="background-color: #545c6a;" name="card_expiry" class="form-control">
         </div>
         <div class="mb-3">
           <label for="card_cvv">CVV</label>
-          <input type="text" class="form-control bg-secondary text-white border-0" name="card_cvv" class="form-control">
+          <input type="text" class="form-control text-white border-0" style="background-color: #545c6a;" name="card_cvv" class="form-control">
         </div>
       </div>
 
@@ -121,7 +121,7 @@
         </ul>
         <div class="mb-3">
           <label for="payment_reference">Bank Reference Number</label>
-          <input type="text" class="form-control bg-secondary text-white border-0" name="payment_reference" class="form-control">
+          <input type="text" class="form-control text-white border-0" style="background-color: #545c6a;" name="payment_reference" class="form-control">
         </div>
       </div>
 
@@ -136,7 +136,7 @@
 
       <div class="mb-3">
         <label for="notes">Notes (optional)</label>
-        <textarea name="notes" class="form-control bg-secondary text-white border-0"></textarea>
+        <textarea name="notes" class="form-control text-white border-0" style="background-color: #545c6a;"></textarea>
       </div>
 
       <button type="submit" class="btn btn-primary">Donate Now</button>

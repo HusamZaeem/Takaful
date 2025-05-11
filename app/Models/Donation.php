@@ -9,7 +9,7 @@ class Donation extends Model
     
     
 
-    protected $primaryKey = 'donation_id';
+    protected $primaryKey = 'id';
 
     protected $fillable = [
         'user_id', 'guest_donor_id', 'amount', 'currency', 'notes',

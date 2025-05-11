@@ -67,6 +67,16 @@
       });
     });
   </script>
-  
 
+  <!-- SweetAlert2 -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  
+  
+<!-- Bootstrap Select JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta2/dist/js/bootstrap-select.min.js"></script>
+<script>
+  $(function() {
+    $('.selectpicker').selectpicker();
+  });
+</script>
 

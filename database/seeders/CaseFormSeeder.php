@@ -27,7 +27,6 @@ class CaseFormSeeder extends Seeder
                 
                 CaseForm::create([
                     'user_id' => $user->user_id,
-                    'id_number' => $faker->numerify('########'),
                     'incident_date' => $faker->date(),
                     'short_description' => $faker->sentence(10),
                     'notes' => $faker->optional()->paragraph,

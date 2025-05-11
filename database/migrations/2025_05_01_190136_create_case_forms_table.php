@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('case_forms', function (Blueprint $table) {
             $table->id('case_id');
             $table->unsignedBigInteger('user_id');
-            $table->string('id_number');
             $table->date('incident_date');
             $table->text('short_description');
             $table->text('notes')->nullable();

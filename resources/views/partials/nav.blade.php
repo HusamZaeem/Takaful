@@ -12,7 +12,13 @@
                 <a href="#">Pages</a>
                 <ul class="sub-menu">
                   <li><a href="{{ route('donations.create') }}">Make A Donation</a></li>
-                  <li><a href="#">Register A Case</a></li>
+                  <li>
+                    @auth
+                      <a href="{{ route('case.registration.form') }}">Register A Case</a>
+                    @else
+                      <a href="javascript:void(0);" onclick="alertLoginRequired()">Register A Case</a>
+                    @endauth
+                  </li>                  
                 </ul>
               </li>
               <li><a href="{{ url('/#hopeDelivered') }}">Hope Delivered</a></li>

@@ -19,6 +19,7 @@
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
+            
             @include('layouts.navigation')
 
             <!-- Page Heading -->
@@ -35,5 +36,44 @@
                 {{ $slot }}
             </main>
         </div>
+
+
+
+
+
+           <!-- SweetAlert2 -->
+            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+            @if(session('success') || session('error'))
+            <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                @if(session('success'))
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Success!',
+                    text: @json(session('success')),
+                    timer: 5000,
+                    timerProgressBar: true,
+                    showConfirmButton: false,
+                });
+                @elseif(session('error'))
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: @json(session('error')),
+                    confirmButtonText: 'OK'
+                });
+                @endif
+            });
+            </script>
+            @endif
+
+            {{-- allow pages to push additional scripts (e.g. delete confirmation) --}}
+            @stack('scripts')
+</body>
+</html>
+
+
+
     </body>
 </html>

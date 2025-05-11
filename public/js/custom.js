@@ -314,7 +314,38 @@
         }
     })
 
+
+	
 	
 
 })(window.jQuery);
+
+
+
+function alertLoginRequired() {
+    Swal.fire({
+        title: '🔒 Login Required',
+        text: 'You must be logged in to register a case.',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Login Now',
+        cancelButtonText: 'Cancel',
+        timer: 7000,
+        timerProgressBar: true,
+        allowOutsideClick: false,
+        allowEscapeKey: false,
+        customClass: {
+            popup: 'custom-swal-popup',
+            confirmButton: 'custom-confirm-button',
+            cancelButton: 'custom-cancel-button'
+        }
+    }).then((result) => {
+        if (result.isConfirmed) {
+            window.location.href = "/login";
+        }
+    });
+}
+
 

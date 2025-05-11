@@ -8,8 +8,12 @@
                 <h3>Report a Loss</h3>
                 <p>If your home was damaged or a loved one was martyred, help us reach you by submitting your case.</p>
                 <div class="main-button-red">
-                  <div class="scroll-to-section"><a href="#contact">Register Now!</a></div>
-              </div>
+                    @auth
+                        <a href="{{ route('case.registration.form') }}">Register Now!</a>
+                    @else
+                        <a href="javascript:void(0);" onclick="alertLoginRequired()">Register Now!</a>
+                    @endauth
+                </div>                               
               </div>
             </div>
             <div class="col-lg-12">
@@ -17,7 +21,7 @@
                 <h3>Make a Donation</h3>
                 <p>Your donation provides urgent aid—food, shelter, and medical support—for families in crisis.</p>
                 <div class="main-button-yellow">
-                  <div class="scroll-to-section"><a href="#contact">Donate Now!</a></div>
+                  <div><a href="{{ route('donations.create') }}">Donate Now!</a></div>
               </div>
               </div>
             </div>
