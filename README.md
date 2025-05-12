@@ -56,7 +56,7 @@ Takaful is built using the following technologies:
 ---
 
 
-## Screenshots 📸
+## Screenshots
 
 To provide a visual overview, here are screenshots from various parts of the platform:
 
@@ -92,11 +92,13 @@ To provide a visual overview, here are screenshots from various parts of the pla
 ![Dashboard](screenshots/dashboard.png)
 
 ### 🛠️ Admin Panel
-![Admin Panel1](screenshots/admin-panel-general-user.png)
+![Admin Panel1](screenshots/admin-panel-search-users.png)
 ![Admin Panel2](screenshots/admin-panel-general-user-show.png)
-![Admin Panel3](screenshots/admin-panel-general-case-show.png)
-![Admin Panel4](screenshots/admin-panel-general-case-edit.png)
-![Admin Panel5](screenshots/admin-panel-general-donation-delete.png)
+![Admin Panel3](screenshots/admin-panel-search-cases.png)
+![Admin Panel4](screenshots/admin-panel-general-case-show.png)
+![Admin Panel5](screenshots/admin-panel-general-case-edit.png)
+![Admin Panel6](screenshots/admin-panel-search-donations.png)
+![Admin Panel7](screenshots/admin-panel-general-donation-delete.png)
 
 
 

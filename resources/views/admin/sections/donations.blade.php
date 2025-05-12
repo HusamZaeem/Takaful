@@ -1,6 +1,44 @@
 {{-- Donations Section --}}
 <section>
-  <h3 class="text-lg text-white mb-4">Donations</h3>
+  
+    <h3 class="text-lg text-white mb-4">Donations</h3>
+
+  <div class="flex items-center justify-between mb-4">
+        
+
+        
+
+
+        <form method="GET" action="{{ route('admin.donations.index') }}" class="mb-4 flex items-center space-x-2">
+            
+            <input
+                id="search-input_donations"
+                type="text"
+                name="search"
+                placeholder="Search donations..."
+                value="{{ request('search') }}"
+                class="px-3 py-1 rounded bg-gray-800 border border-gray-600 text-white"
+            >
+
+            <select name="criteria" id="search-criteria-donations" class="px-2 py-1 rounded bg-gray-800 border border-gray-600 text-white">
+                <option value="name" {{ request('criteria') == 'name' ? 'selected' : '' }}>Name</option>
+                <option value="email" {{ request('criteria') == 'email' ? 'selected' : '' }}>Email</option>
+                <option value="reference" {{ request('criteria') == 'reference' ? 'selected' : '' }}>Payment Ref</option>
+                <option value="status" {{ request('criteria') == 'status' ? 'selected' : '' }}>Status</option>
+                <option value="method" {{ request('criteria') == 'method' ? 'selected' : '' }}>Method</option>
+            </select>
+
+            <button type="submit" id="search-donations" class="bg-indigo-600 hover:bg-indigo-700 text-white px-3 py-1 rounded">
+                Search
+            </button>
+
+            <button type="button" id="clear-donations" class="bg-gray-600 hover:bg-gray-500 text-white px-3 py-1 rounded">
+                Clear
+            </button>
+    </form>
+
+    </div>
+
 
   @if($donations->isEmpty())
       <p class="text-gray-400">No donations recorded.</p>
@@ -140,6 +178,30 @@
 
 @push('scripts')
 <script>
+
+
+
+
+
+    document.getElementById('search-donations').addEventListener('click', function (e) {
+        e.preventDefault();
+        const searchTerm = document.getElementById('search-input_donations').value;
+        const searchCriteria = document.getElementById('search-criteria-donations').value;
+        const url = new URL(window.location.href);
+        url.searchParams.set('search', searchTerm);
+        url.searchParams.set('criteria', searchCriteria);
+        window.location.href = url.toString();
+    });
+
+    document.getElementById('clear-donations').addEventListener('click', function () {
+        window.location.href = '{{ route('admin.donations.index') }}';
+    });
+
+
+
+
+
+
 document.addEventListener('DOMContentLoaded', () => {
   // Show modal
   document.querySelectorAll('.open-donation-show').forEach(btn => {

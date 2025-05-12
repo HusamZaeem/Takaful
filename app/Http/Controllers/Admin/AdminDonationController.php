@@ -5,17 +5,81 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Donation;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class AdminDonationController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
-    {
-        $donations = Donation::latest()->with(['user', 'guestDonor'])->get();
-        return view('admin.donations.index', compact('donations'));
+    public function index(Request $request)
+
+    
+{
+
+    $admin = Auth::guard('admin')->user();
+    
+    $query = Donation::with(['user', 'guestDonor'])->latest();
+
+    $search = $request->input('search');
+    $criteria = $request->input('criteria');
+
+    if ($search) {
+        $query->where(function ($q) use ($search, $criteria) {
+            switch ($criteria) {
+                case 'name':
+                    $q->whereHas('user', fn($q) => $q->where('first_name', 'like', "%$search%")
+                                                    ->orWhere('last_name', 'like', "%$search%"))
+                      ->orWhereHas('guestDonor', fn($q) => $q->where('name', 'like', "%$search%"));
+                    break;
+
+                case 'email':
+                    $q->whereHas('user', fn($q) => $q->where('email', 'like', "%$search%"))
+                      ->orWhereHas('guestDonor', fn($q) => $q->where('email', 'like', "%$search%"));
+                    break;
+
+                case 'reference':
+                    $q->where('payment_reference', 'like', "%$search%");
+                    break;
+
+                case 'status':
+                    $q->where('payment_status', 'like', "%$search%");
+                    break;
+
+                case 'method':
+                    $q->where('payment_method', 'like', "%$search%");
+                    break;
+
+                default:
+                    // fallback: search all
+                    $q->where('payment_reference', 'like', "%$search%")
+                      ->orWhere('amount', 'like', "%$search%")
+                      ->orWhere('currency', 'like', "%$search%")
+                      ->orWhere('payment_method', 'like', "%$search%")
+                      ->orWhere('payment_status', 'like', "%$search%")
+                      ->orWhereHas('user', fn($q) => $q->where('first_name', 'like', "%$search%")
+                                                       ->orWhere('last_name', 'like', "%$search%")
+                                                       ->orWhere('email', 'like', "%$search%"))
+                      ->orWhereHas('guestDonor', fn($q) => $q->where('name', 'like', "%$search%")
+                                                            ->orWhere('email', 'like', "%$search%"));
+                    break;
+            }
+        });
     }
+
+    $donations = $query->paginate(20); // or ->get() if you don't want pagination
+
+    return view('admin.panel', [
+            'admin' => $admin,
+            'donations' => $donations,
+            'section' => 'donations',
+            'canViewUsers' => false,
+            'canViewCases' => false,
+            'canViewDonations' => true,
+            'activeSection' => 'donations',
+        ]);}
+
+
 
     /**
      * Show the form for creating a new resource.

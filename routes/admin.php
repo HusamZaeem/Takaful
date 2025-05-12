@@ -28,10 +28,12 @@ Route::prefix('admin')->name('admin.')->group(function () {
         
 
         // Cases
+        Route::get('/cases', [AdminCaseController::class, 'index'])->name('cases.index');
         Route::delete('/cases/{id}', [AdminCaseController::class, 'destroy'])->name('cases.destroy');
         Route::patch('/cases/{id}', [AdminCaseController::class, 'update'])->name('cases.update');
 
         // Donations
+        Route::get('/donations', [AdminDonationController::class, 'index'])->name('donations.index');
         Route::delete('/donations/{id}', [AdminDonationController::class, 'destroy'])->name('donations.destroy');
         Route::patch('/donations/{id}', [AdminDonationController::class, 'update'])->name('donations.update');
 

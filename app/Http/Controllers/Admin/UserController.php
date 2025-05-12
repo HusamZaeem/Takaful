@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\User;
+use App\Models\CaseForm;
+use App\Models\Donation;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -12,17 +14,38 @@ class UserController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        
-        $admin = Auth::guard('admin')->user(); // Retrieve the authenticated admin
+
+        $admin = Auth::guard('admin')->user();
+
+        $searchTerm = $request->input('search');
+        $searchCriteria = $request->input('criteria', 'user_id');
+
+        $users = User::query()
+            ->when($searchTerm, function ($query) use ($searchTerm, $searchCriteria) {
+                return match ($searchCriteria) {
+                    'user_id' => $query->where('user_id', 'like', "%{$searchTerm}%"),
+                    'name'    => $query->whereRaw("CONCAT(first_name, ' ', last_name) LIKE ?", ["%{$searchTerm}%"]),
+                    'email'   => $query->where('email', 'like', "%{$searchTerm}%"),
+                    'city'    => $query->where('city', 'like', "%{$searchTerm}%"),
+                    default   => $query,
+                };
+            })
+            ->latest()
+            ->get();
 
         
-        $users = User::latest()->get();
 
-    
-        return view('admin.panel', compact('users', 'admin'));
+        return view('admin.panel', ['admin' => $admin, 'users' => $users, 'section' => 'users'])
+            ->with('canViewUsers', true)
+            ->with('canViewCases', false)
+            ->with('canViewDonations', false)
+            ->with('activeSection', 'users');
+
     }
+
+
 
     /**
      * Show the form for creating a new resource.

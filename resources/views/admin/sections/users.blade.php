@@ -1,5 +1,30 @@
 <section>
   <h3 class="text-lg text-white mb-4">Users</h3>
+
+  <form method="GET" action="{{ route('admin.users.index') }}" class="flex items-center gap-3 flex-wrap mb-4">
+    <select name="criteria" id="search-criteria" class="px-4 py-2 border border-gray-600 rounded-md text-white bg-gray-800 dark:bg-gray-700">
+        <option value="user_id" {{ ($searchCriteria ?? 'user_id') === 'user_id' ? 'selected' : '' }}>Search by ID</option>
+        <option value="name" {{ ($searchCriteria ?? '') === 'name' ? 'selected' : '' }}>Search by Name</option>
+        <option value="email" {{ ($searchCriteria ?? '') === 'email' ? 'selected' : '' }}>Search by Email</option>
+        <option value="city" {{ ($searchCriteria ?? '') === 'city' ? 'selected' : '' }}>Search by City</option>
+    </select>
+
+    <input
+        type="text"
+        name="search"
+        id="search-input"
+        placeholder="Search"
+        value="{{ $searchTerm ?? '' }}"
+        class="px-4 py-2 w-64 border border-gray-600 rounded-md text-white bg-gray-800 dark:bg-gray-700"
+    >
+
+    <button type="submit" id="search-button" class="px-4 py-2 bg-blue-600 text-white rounded-md">Search</button>
+
+    <button type="button" id="clear-button-users" class="px-4 py-2 bg-gray-700 text-white rounded-md hover:bg-gray-600">Clear</button>
+  </form>
+
+
+
   @if($users->isEmpty())
     <p>No users found.</p>
   @else
@@ -51,6 +76,21 @@
 
 <script>
     
+    // Handle the search functionality
+    document.getElementById('search-button').addEventListener('click', function() {
+        const searchTerm = document.getElementById('search-input').value;
+        const searchCriteria = document.getElementById('search-criteria').value;
+
+        // Redirect to the same page with the search query and criteria
+        window.location.href = `/admin/users?search=${encodeURIComponent(searchTerm)}&criteria=${encodeURIComponent(searchCriteria)}`;
+    });
+
+    // Clear the search input and reset the criteria
+    document.getElementById('clear-button-users').addEventListener('click', function() {
+        document.getElementById('search-input').value = '';
+        document.getElementById('search-criteria').value = 'user_id'; 
+        window.location.href = '{{ route('admin.users.index') }}';
+    });
 
     function showModal(userId) {
       const defaultImage = document.getElementById('defaultProfileImage').value;
@@ -60,13 +100,13 @@
           .then(data => {
               let profilePic = defaultImage;
 
-              const pic = data.profile_picture?.trim(); // safe trim
+              const pic = data.profile_picture?.trim(); 
 
               if (pic) {
                   if (pic.startsWith('http://') || pic.startsWith('https://')) {
-                      profilePic = pic; // full URL, use directly
+                      profilePic = pic; 
                   } else {
-                      profilePic = `/storage/${pic}`; // relative path
+                      profilePic = `/storage/${pic}`; 
                   }
               }
 

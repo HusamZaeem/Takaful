@@ -3,6 +3,34 @@
 <section>
     <h3 class="text-lg text-white mb-4">Cases</h3>
 
+    <form method="GET" action="{{ route('admin.cases.index') }}" class="mb-4 flex items-center space-x-2">
+        <input type="hidden" name="section" value="cases">
+
+        <input
+            id="search-input"
+            type="text"
+            name="search"
+            placeholder="Search cases..."
+            value="{{ request('search') }}"
+            class="px-3 py-1 rounded bg-gray-800 border border-gray-600 text-white"
+        >
+
+        <select name="criteria" id="search-criteria" class="px-2 py-1 rounded bg-gray-800 border border-gray-600 text-white">
+            <option value="case_id" {{ request('criteria') == 'case_id' ? 'selected' : '' }}>Case ID</option>
+            <option value="name" {{ request('criteria') == 'name' ? 'selected' : '' }}>User Name</option>
+            <option value="status" {{ request('criteria') == 'status' ? 'selected' : '' }}>Status</option>
+            <option value="admin_note" {{ request('criteria') == 'admin_note' ? 'selected' : '' }}>Admin Note</option>
+        </select>
+
+        <button type="submit" id="search-button" class="bg-indigo-600 hover:bg-indigo-700 text-white px-3 py-1 rounded">Search</button>
+
+        <button type="button" id="clear-button" class="bg-gray-600 hover:bg-gray-500 text-white px-3 py-1 rounded">
+            Clear
+        </button>
+    </form>
+
+
+
     @if($cases->isEmpty())
         <p class="text-gray-400">No cases have been submitted.</p>
     @else
@@ -22,25 +50,25 @@
                     @foreach($cases as $index => $case)
                     <tr class="hover:bg-gray-700 transition">
                         <td class="px-4 py-3 border-t border-gray-700">{{ $index + 1 }}</td>
-                        <td class="px-4 py-3 border-t border-gray-700">{{ $case->user->first_name }} {{ $case->user->last_name }}</td>
-                        <td class="px-4 py-3 border-t border-gray-700">{{ $case->incident_date }}</td>
+                        <td class="px-4 py-3 border-t border-gray-700">{{ optional($case->user)->first_name ?? '' }} {{ optional($case->user)->last_name ?? '' }}</td>
+                        <td class="px-4 py-3 border-t border-gray-700">{{ optional($case->incident_date)->format('M d, Y') ?? $case->incident_date ?? '' }}</td>
                         <td class="px-4 py-3 border-t border-gray-700 capitalize">{{ $case->status }}</td>
-                        <td class="px-4 py-3 border-t border-gray-700">{{ \Illuminate\Support\Str::limit($case->admin_note, 30) }}</td>
+                        <td class="px-4 py-3 border-t border-gray-700">{{ optional($case->admin_note)->take(30) ?? ($case->admin_note), $case->admin_note, 30 ?? 'No Notes Added' }}</td>
                         <td class="px-4 py-3 border-t border-gray-700 space-x-2">
                             {{-- Show --}}
                             <button 
                                 class="open-show-modal text-blue-400 hover:text-blue-300 font-medium"
-                                data-id="{{ $case->case_id }}"
-                                data-user="{{ $case->user->first_name }} {{ $case->user->last_name }}"
-                                data-email="{{ $case->user->email }}"
-                                data-phone="{{ $case->user->phone }}"
-                                data-dob="{{ $case->user->date_of_birth }}"
-                                data-nationality="{{ $case->user->nationality }}"
-                                data-incident-date="{{ $case->incident_date }}"
-                                data-description="{{ $case->short_description }}"
-                                data-notes="{{ $case->notes }}"
-                                data-status="{{ $case->status }}"
-                                data-admin-note="{{ $case->admin_note }}">
+                                data-id="{{ optional($case->case_id)->case_id ?? $case->case_id }}"
+                                data-user="{{ optional($case->user)->user_id ?? $case->user->user_id }}" data-name="{{ $case->user->first_name }} {{ $case->user->last_name }}"
+                                data-email="{{ optional($case->user)->email ?? $case->user->email }}"
+                                data-phone="{{ optional($case->user)->phone ?? $case->user->phone }}"
+                                data-dob="{{ optional($case->user)->date_of_birth ?? $case->user->date_of_birth }}"
+                                data-nationality="{{ optional($case->user)->nationality ?? $case->user->nationality }}"
+                                data-incident-date="{{ optional($case->incident_date)->format('M d, Y') ?? $case->incident_date }}"
+                                data-description="{{ optional($case->description)->description ?? $case->short_description }}"
+                                data-notes="{{ optional($case->notes)->notes ?? $case->notes }}"
+                                data-status="{{ optional($case->status)->status ?? $case->status }}"
+                                data-admin-note="{{ optional($case->admin_note)->admin_note ?? $case->admin_note }}">
                                 Show
                             </button>
 
@@ -119,7 +147,7 @@
 <div id="edit-case-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center">
     <div class="bg-white dark:bg-gray-800 p-6 rounded-lg w-96 text-white">
       <h4 class="font-semibold mb-4 text-gray-900 dark:text-gray-100">Edit Case</h4>
-      <form id="case-edit-form" method="POST" action="{{ route('admin.cases.update', $case->case_id) }}">
+      <form id="case-edit-form" method="POST" action="">
         @csrf @method('PATCH')
         <div class="mb-3">
           <label class="block mb-1">Status</label>
@@ -146,7 +174,25 @@
 
   @push('scripts')
 <script>
-document.addEventListener('DOMContentLoaded', () => {
+
+
+    
+    document.getElementById('search-button').addEventListener('click', function () {
+    const searchTerm = document.getElementById('search-input').value;
+    const searchCriteria = document.getElementById('search-criteria').value;
+    window.location.href = `/admin/cases?search=${encodeURIComponent(searchTerm)}&criteria=${encodeURIComponent(searchCriteria)}`;
+    });
+
+
+    document.getElementById('clear-button').addEventListener('click', function () {
+        window.location.href = '/admin/cases'; 
+    });
+
+
+
+
+
+    document.addEventListener('DOMContentLoaded', () => {
 
         
     function displayOrDash(value) {

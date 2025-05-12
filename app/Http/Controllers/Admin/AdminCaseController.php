@@ -5,17 +5,49 @@ namespace App\Http\Controllers\Admin;
 use App\Models\CaseForm;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class AdminCaseController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $cases = CaseForm::latest()->get();
-        return view('admin.cases.index', compact('cases'));
+        $admin = Auth::guard('admin')->user();
+
+        $searchTerm = $request->input('search');
+        $searchCriteria = $request->input('criteria', 'name');
+
+        $cases = CaseForm::with('user') 
+            ->when($searchTerm, function ($query) use ($searchTerm, $searchCriteria) {
+            return match ($searchCriteria) {
+                'case_id' => is_numeric($searchTerm)
+                    ? $query->where('case_id', (int)$searchTerm)
+                    : $query, // skip filtering if case_id is not a number
+                'name' => $query->whereHas('user', function ($q) use ($searchTerm) {
+                    $q->whereRaw("CONCAT(first_name, ' ', last_name) LIKE ?", ["%{$searchTerm}%"]);
+                }),
+                'status' => $query->where('status', 'like', "%{$searchTerm}%"),
+                'admin_note' => $query->where('admin_note', 'like', "%{$searchTerm}%"),
+                default => $query,
+            };
+        })
+
+            ->latest()
+            ->get();
+
+        return view('admin.panel', [
+            'admin' => $admin,
+            'cases' => $cases,
+            'section' => 'cases',
+            'canViewUsers' => false,
+            'canViewCases' => true,
+            'canViewDonations' => false,
+            'activeSection' => 'cases',
+        ]);
     }
+
 
     /**
      * Show the form for creating a new resource.
